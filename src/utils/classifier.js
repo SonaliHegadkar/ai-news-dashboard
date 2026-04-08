@@ -49,7 +49,6 @@ function classify(title, description) {
     ? matches(text, AFTERMARKET_KEYWORDS) ? 'Aftermarket' : 'OE'
     : 'General'
 
-  // Focus Area
   let FocusArea = 'General'
   if (matches(text, EV_KEYWORDS))                                    FocusArea = 'EV'
   else if (text.includes('autonomous') || text.includes('self-driving')) FocusArea = 'Autonomous'
@@ -66,9 +65,8 @@ function classify(title, description) {
 
 // ─── Public API ───────────────────────────────────────────────────────────────
 
-// Simulates an async API call — resolves after a short random delay
+// Simulates an async API call — resolves after a short fixed delay
 export async function classifyArticle(article) {
-  const delay = 500 + Math.random() * 400
-  await new Promise(resolve => setTimeout(resolve, delay))
+  await new Promise(resolve => setTimeout(resolve, 700))
   return classify(article.title, article.description)
 }
